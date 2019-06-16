@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias esrc="emacs ${HOME}/.zshrc"
+
 alias emacs="emacs -nw"
 alias clean_before_commit="find . -name 'a.out' -delete && find . -name '*~' -delete"
 alias access_ldap="sudo docker exec -it eacc7516904b /bin/bash"
