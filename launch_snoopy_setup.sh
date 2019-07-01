@@ -1,4 +1,4 @@
-cd snoopy_setup && cd emacs
+cd emacs
 ./setup_emacs.sh
 cd ../oh-my-zsh
 ./1_setup_oh_my_zsh.sh
