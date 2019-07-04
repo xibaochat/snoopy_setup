@@ -1,6 +1,5 @@
 ;require
 (require 'cc-mode)
-(require 'package)
 
 ;; Automatic indentation for c-modes (after pressing tab)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
@@ -28,34 +27,10 @@
  '(font-lock-function-name-face ((t (:foreground "color-136"))))
  '(font-lock-keyword-face ((t (:foreground "color-241"))))
 
- ;; For auto-complete popup
-'(popup-face ((t (:inherit default :background "black" :foreground "color-243"))))
-'(popup-scroll-bar-background-face ((t (:background "black"))))
-'(popup-summary-face ((t (:inherit popup-face :background "black" :foreground "dimgray"))))
-'(popup-tip-face ((t (:background "brightblack" :foreground "black")))))
-
 
 
 ;; Warning policy
 (setq warning-minimum-level :emergency)
-
-;; Melpa installer
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.org/packages/")
-   t)
-  (package-initialize))
-
-;; Auto-completion
-;(ac-config-default)
-
-;; Google Trad
-;(setq google-translate-translation-directions-alist '(("fr" . "en")))
-
-;; Auto Update Package
-;(auto-package-update-at-time "16:20")
 
 ;; Set default font
 (set-face-attribute 'default nil
@@ -70,17 +45,6 @@
 ;; add space after linum
 (setq linum-format "%d ")
 
-
-;; ORG mode
-;; -*- emacs-lisp -*-
-(unless package-archive-contents    ;; Refresh the packages descriptions
-  (package-refresh-contents))
-(setq package-load-list '(all))     ;; List of packages to load
-(unless (package-installed-p 'org)  ;; Make sure the Org package is
-  (package-install 'org))           ;; installed, install it if not
-(package-initialize)                ;; Initialize & Install Package
-;; (setq org-...)                   ;; Your custom settings
-
 ;; bar color
 (set-face-foreground 'mode-line "#606060")
 (set-face-background 'mode-line "#202020")
@@ -89,32 +53,3 @@
 
 ;;; Remove menu bar
 (menu-bar-mode -1)
-
-;; AutoComplete
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(unless (package-installed-p 'auto-complete)  ;; Make sure the Org package is
-  (package-install 'auto-complete))           ;; installed, install it if not
-(package-initialize)  ;load and activate packages, including auto-complete
-(ac-config-default)
-(global-auto-complete-mode t)
-
-;; replace killing all buffer, by just the current one
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-
-;; Dockerfile mode
-(unless (package-installed-p 'dockerfile-mode)
-  (package-install 'dockerfile-mode))
-(require 'dockerfile-mode)
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-
-;; Web=mode
-;; highlight/indent code inside HTML balise
-(unless (package-installed-p 'web-mode)
-  (package-install 'web-mode))
-
-;; Yaml mode
-(unless (package-installed-p 'yaml-mode)
-  (package-install 'yaml-mode))
-
-(setq lazy-highlight-cleanup nil)
